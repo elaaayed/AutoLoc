@@ -2,6 +2,7 @@ package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import tn.esprit.autoloc.entities.enums.StatutReservation;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
 
 public class Reservation {
     @Id
@@ -21,4 +23,14 @@ public class Reservation {
 
     @Enumerated(EnumType.STRING)
     StatutReservation statut;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
+    Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    Vehicule vehicule;
+
+    @OneToOne(mappedBy = "reservation", fetch = FetchType.LAZY)
+    Contrat contrat;
 }

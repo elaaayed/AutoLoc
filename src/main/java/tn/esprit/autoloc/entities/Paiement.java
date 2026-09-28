@@ -2,6 +2,7 @@ package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import tn.esprit.autoloc.entities.enums.ModePaiement;
 
 import java.math.BigDecimal;
@@ -12,6 +13,8 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
+
 
 public class Paiement {
     @Id
@@ -22,4 +25,8 @@ public class Paiement {
 
     @Enumerated(EnumType.STRING)
     ModePaiement modePaiement;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contrat_id")
+    Contrat contrat;
 }

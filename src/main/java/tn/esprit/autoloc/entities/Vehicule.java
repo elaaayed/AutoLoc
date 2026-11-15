@@ -23,7 +23,7 @@ import java.util.Set;
 public class Vehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idVehicule;
+    Long idVehicule;
     String immatriculation;
     String marque;
     String modele;

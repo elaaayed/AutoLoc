@@ -21,7 +21,7 @@ import java.util.Set;
 public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idAgence;
+    Long idAgence;
     String nom;
     String ville;
     String adresse;
@@ -32,7 +32,7 @@ public class Agence {
     @OneToMany (mappedBy ="agence",fetch=FetchType.LAZY)
     Set<Employe> employes = new HashSet<>();
 
-    @JsonIgnore
+    @JsonIgnoreProperties("agence")
     @OneToMany (mappedBy ="agence",fetch=FetchType.LAZY)
     Set<Vehicule> vehicules= new HashSet<>();
 }

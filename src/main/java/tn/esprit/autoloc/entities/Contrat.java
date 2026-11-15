@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,7 +21,7 @@ import java.util.Set;
 public class Contrat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long idContrat;
+    Long idContrat;
     LocalDate dateSignature;
     BigDecimal montantTotal;
     boolean valide;
